@@ -1,0 +1,8 @@
+// npm init -y
+//  npm i express express-graphql graphql mongoose cors colors dotenv
+//  npm i -D nodemon
+//   "start": "node server/index.js",
+//     "dev": "nodemon server/index.js",
+//     const { graphqlHTTP } = require("express-graphql");
+// open schema folder then
+// const schema = require(`./schema/schema`);
