@@ -1,6 +1,7 @@
 const projects = [
   {
     id: "6395f8ef4ade3f7d7d3e7c57",
+    clientId:"1",
     name: "Used Car Depot",
     live: "https://used-cars-project-a88b9.web.app/",
     source: "https://github.com/sarwar-asik/used-car-depo",
@@ -18,6 +19,7 @@ const projects = [
   },
   {
     id: "6395f8ef4ade3f7d7d3e7c59",
+    clientId:"2",
     name: "Doctors Portal",
     live: "https://sh-five-stars-hotel.web.app/",
     source: "https://github.com/sarwar-asik/doctors-project",
@@ -36,6 +38,7 @@ const projects = [
   {
     id: "6395f8ef4ade3f7d7d3e7c58",
     name: "Service Provider",
+    clientId:"3",
     live: "https://sh-travel-service.web.app/",
     source: "https://github.com/sarwar-asik/service-provider-projects",
     img: "https://img.freepik.com/free-photo/travelling-concept-with-group-travelers-miniature_1150-17844.jpg?w=1060&t=st=1667845175~exp=1667845775~hmac=0c04f3582866bcb24f3e6c8dec9ab70723493d1f86dc0e833c63a9387b3b03d0",

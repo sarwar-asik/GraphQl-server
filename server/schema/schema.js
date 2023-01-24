@@ -1,4 +1,3 @@
-const { projects, clients } = require("../projectData.js");
 const {
   GraphQLObjectType,
   GraphQlID,
@@ -7,20 +6,28 @@ const {
   GraphQLList,
 } = require("graphql");
 
-// const {} =graphql
+//Mongoose model//
+const Client = require("../models/client.js");
+const Project = require("../models/Projects.js");
 
-// projects type 
-const ProjectType= new GraphQLObjectType({
-  name:"Projects",
-  fields:()=>({
-    id:{type:GraphQLString},
-    name:{type:GraphQLString},
-    live:{type:GraphQLString},
-    source:{type:GraphQLString},
-    img:{type:GraphQLString},
-    time:{type:GraphQLString},
-  })
-})
+// projects type
+const ProjectType = new GraphQLObjectType({
+  name: "Projects",
+  fields: () => ({
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    live: { type: GraphQLString },
+    source: { type: GraphQLString },
+    img: { type: GraphQLString },
+    time: { type: GraphQLString },
+    client: {
+      type: ClientType,
+      resolve(par, arg) {
+        return Client.findById(par.clientId);
+      },
+    },
+  }),
+});
 // Client Type///
 const ClientType = new GraphQLObjectType({
   name: "Client",
@@ -35,30 +42,30 @@ const ClientType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
-    projects:{
+    projects: {
       type: new GraphQLList(ProjectType),
-      resolve(parent,args){
-        return projects
-      }
+      resolve(parent, args) {
+        return Project.find();
+      },
     },
-    project:{
-      type:ProjectType,
-      args:{id :{ type:GraphQLString}},
-      resolve(p,args){
-        return projects.find(project =>project.id ===args.id)
-      }
+    project: {
+      type: ProjectType,
+      args: { id: { type: GraphQLString } },
+      resolve(p, args) {
+        return Project.findById(args.id);
+      },
     },
     clients: {
       type: new GraphQLList(ClientType),
       resolve(parent, args) {
-        return clients;
+        return Client.find();
       },
     },
     client: {
       type: ClientType,
       args: { id: { type: GraphQLString } },
       resolve(parent, args) {
-        return clients.find((client) => client.id === args.id);
+        return Client.findById(args.id);
       },
     },
   },
